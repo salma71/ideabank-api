@@ -22,12 +22,21 @@ module Api::V1
 
         render json: @idea, status: 200
     end
-    def destory
+    def destroy #  work
         @idea = Idea.find(params[:id])
-        @idea.delete
+        @idea.destroy
+        # raise params.inspect
+        render json: @ideas, status: 200
+        # redirect_to api_v1_ideas_path(@idea, format: :json)
 
-        render json: {ideaId: @idea.id}
     end
+    # def destory
+    #     @idea = Idea.find(params[:id])
+    #     @idea.destroy
+
+    #     render json: {ideaId: @idea.id}
+    #     # redirect_to json: @ideas, status: 200
+    # end
 
     private 
     def idea_params
