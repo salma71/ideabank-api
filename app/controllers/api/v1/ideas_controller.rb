@@ -16,11 +16,14 @@ module Api::V1
 
         render json: @idea, status: 200
     end
+    def edit 
+      @idea = Idea.find(params[:id])
+    end
     def update
         @idea = Idea.find(params[:id])
-        @idea.update(idea_params)
+        @idea.update_attributes(idea_params)
 
-        render json: @idea, status: 200
+        render json: @ideas, status: 200
     end
     def destroy #  work
         @idea = Idea.find(params[:id])
@@ -40,7 +43,7 @@ module Api::V1
 
     private 
     def idea_params
-        params.require(:idea).permit(:title, :body)
+        params.permit(:title, :body)
     end
   end
 end
