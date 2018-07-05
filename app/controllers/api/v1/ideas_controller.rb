@@ -43,7 +43,7 @@ module Api::V1
 
     private 
     def idea_params
-        params.permit(:title, :body)
+        params.permit(:title, :body, :likes)
     end
   end
 end
